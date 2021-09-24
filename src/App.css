@@ -8,3 +8,29 @@ body {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+.hrtext {
+  overflow: hidden;
+  text-align: center;
+}
+
+.hrtext:before,
+.hrtext:after {
+  background-color: rgb(192, 192, 192);
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+
+.hrtext:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+
+.hrtext:after {
+  left: 0.5em;
+  margin-right: -50%;
+}
