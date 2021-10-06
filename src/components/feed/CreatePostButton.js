@@ -16,6 +16,8 @@ export default function CreatePostButton() {
     db.posts.add({
       userId: currentUser.uid,
       data: name,
+      user: currentUser.displayName,
+      userPhotoUrl: currentUser.photoURL,
       createdAt: db.getCurrentTimestamp(),
       likesBy: [],
       likeCount: 0,

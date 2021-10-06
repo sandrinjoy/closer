@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 
-import { Col, Row, Card } from "react-bootstrap";
+import { Image, Col, Row, Card } from "react-bootstrap";
 import LikeButton from "./LikeButton";
 import DeleteButton from "./DeleteButton";
-
+import { LinkContainer } from "react-router-bootstrap";
 import moment from "moment";
 
 import { db } from "../../firebase";
@@ -33,7 +33,6 @@ export default function Posts(props) {
                 newPosts.push(data);
               }
             });
-
             setPosts(newPosts);
           });
       } else if (props.type == "user") {
@@ -45,7 +44,6 @@ export default function Posts(props) {
             docs.forEach((post) => {
               const data = post.data();
               data.id = post.id;
-
               if (data.createdAt) {
                 data.createdAt = moment(
                   data.createdAt.toDate(),
@@ -54,7 +52,6 @@ export default function Posts(props) {
                 newPosts.push(data);
               }
             });
-
             setPosts(newPosts);
           });
       }
@@ -69,7 +66,33 @@ export default function Posts(props) {
           <Card className="m-2" key={index}>
             <Card.Body>
               <Card.Title style={{ fontSize: "1rem" }}>
-                {post.userId}
+                {post.userId === currentUser.uid ? (
+                  <LinkContainer to={`/user`}>
+                    <div className="d-flex ">
+                      <Image
+                        className="mx-2"
+                        src={post.userPhotoUrl}
+                        roundedCircle
+                        width={24}
+                        height={24}
+                      />{" "}
+                      {post.user}
+                    </div>
+                  </LinkContainer>
+                ) : (
+                  <LinkContainer to={`/user/${post.userId}`}>
+                    <div className="d-flex ">
+                      <Image
+                        className="mx-2"
+                        src={post.userPhotoUrl}
+                        roundedCircle
+                        width={24}
+                        height={24}
+                      />{" "}
+                      {post.user}
+                    </div>
+                  </LinkContainer>
+                )}
               </Card.Title>
               <Card.Text>{post.data}</Card.Text>
               {post.userId === currentUser.uid ? (
