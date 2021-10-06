@@ -34,3 +34,11 @@ body {
   left: 0.5em;
   margin-right: -50%;
 }
+
+.btn:focus,.btn:active {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.text-bold{
+  font-weight: bold;
+}

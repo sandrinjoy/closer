@@ -1,7 +1,7 @@
 import firebase from "firebase/compat/app"; //v9
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
-
+import "firebase/compat/storage"
 const app = firebase.initializeApp({
   apiKey: "AIzaSyB1uEck8JeuXpfgf00cNCy95TbYiJ0_RtE",
   authDomain: "closer-309b4.firebaseapp.com",
@@ -14,5 +14,20 @@ const app = firebase.initializeApp({
 
 export const googleProvider=new firebase.auth.GoogleAuthProvider();
 
+//firestore
+
+ const firestore=app.firestore()
+ const createUser =(uid, data)=>{
+  firestore.collection("users")
+    .doc(uid)
+    .set({ uid, ...data }, { merge: true });
+};
+ export const db={
+  users:firestore.collection('users'),
+   posts:firestore.collection('posts'),
+   getCurrentTimestamp: firebase.firestore.FieldValue.serverTimestamp,
+   createUser
+ }
+export const photodb=app.storage();
 export const auth = app.auth()
 export default app

@@ -1,8 +1,9 @@
    
 import React, { useRef, useState } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
-import { useAuth } from "../contexts/AuthContext"
+import { useAuth } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
+import CenteredContainer from "./CenteredContainer"
 export default function EditProfile() {
     const emailRef = useRef()
   const passwordRef = useRef()
@@ -30,7 +31,7 @@ export default function EditProfile() {
 
     Promise.all(promises)
       .then(() => {
-        history.push("/dashboard")
+        history.push("/user")
       })
       .catch(() => {
         setError("Failed to update account")
@@ -40,7 +41,7 @@ export default function EditProfile() {
       })
   }
     return (
-        <>
+        <CenteredContainer>
               <div className="w-100" style={{maxWidth:'400px'}}>
               <Card>
         <Card.Body>
@@ -82,9 +83,9 @@ export default function EditProfile() {
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
-        <Link to="/dashboard">Cancel</Link>
+        <Link to="/user">Cancel</Link>
       </div>
      </div>
-        </>
+        </CenteredContainer>
     )
 }
