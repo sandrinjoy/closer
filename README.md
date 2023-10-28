@@ -1,8 +1,8 @@
 # Closer - A social Community Platform
 
-This is my First ever React Project where I learned a lot from setting up a react app using create react app & deploying it to netlify with a custom domain 
+This is a simple social media clone app with crud operations . 
 
-## Tech Stacks 
+## Tech Stack
 
 - Front End Logic - ReactJS , React-router , React Hooks Fetch API
 - Front End Styling - Bootstrap & React-Bootstrap components
@@ -12,7 +12,7 @@ This is my First ever React Project where I learned a lot from setting up a reac
 
 ## Demo Link 
 
-https://closer.sandrin.live
+https://closer.sandrinjoy.com
 
 
 ### Functionalies 
